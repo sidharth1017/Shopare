@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <!-- Faviconlogo -->
+    {% load static %}
+    <link rel="shortcut icon" href="{%static 'img/favicon.png'  %}" type="image/x-icon">
+    {% block title %}<title>Shopare | Stores </title>{% endblock title %}
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            color: #f2f2f2;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+            text-decoration: none;
+        }
+
+        nav {
+            display: flexbox;
+            width: -webkit-fill-available;
+            background: #000;
+            padding: 10px 40px 10px 70px;
+            height: 7em;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            height: 6em;
+        }
+
+        img.logo {
+            width: 55px;
+            height: 45px;
+            margin-inline-end: 12px;
+        }
+
+        nav ul li.logo {
+            flex: 1;
+            font-size: 30px;
+            font-weight: 700;
+        }
+
+        nav ul div.items {
+            padding: 0 25px;
+            display: inline-flex;
+        }
+
+        nav ul div.items a {
+            text-decoration: none;
+            font-size: 18px;
+            padding: 0 12px;
+            color: white;
+        }
+
+        nav ul div.items p {
+            text-decoration: none;
+            font-size: 18px;
+            padding: 0 12px;
+            color: white;
+        }
+
+        nav ul div.items a:hover {
+            color: cyan;
+        }
+
+        nav ul .search-icon {
+            height: 40px;
+            width: 240px;
+            display: flex;
+            background: #f2f2f2;
+            border-radius: 5px;
+        }
+
+        nav ul .search-icon input {
+            height: 100%;
+            width: 200px;
+            border: none;
+            outline: none;
+            padding: 0 10px;
+            color: #000;
+            font-size: 16px;
+            border-radius: 5px 0 0 5px;
+        }
+
+        nav ul .search-icon .icon {
+            height: 100%;
+            width: 40px;
+            line-height: 40px;
+            text-align: center;
+            border: 1px solid #cccccc;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+        }
+
+        nav ul .search-icon .icon:hover {
+            background: #e6e6e6;
+        }
+
+        nav ul .search-icon .icon span {
+            color: #222222;
+            font-size: 18px;
+        }
+
+        nav ul li.btn {
+            font-size: 29px;
+            flex: 1;
+            padding: 0 40px;
+            display: none;
+        }
+
+        nav ul li.btn span {
+            height: 42px;
+            width: 42px;
+            text-align: center;
+            line-height: 42px;
+            border: 0px solid #151515;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        nav ul li.btn span.show:before {
+            content: '\f00d';
+        }
+
+        @media screen and (max-width: 1052px) {
+            nav {
+                padding: 10px 40px 10px 0px;
+            }
+
+            nav ul li.logo {
+                display: none;
+            }
+
+            nav ul div.items {
+                flex: 4;
+            }
+        }
+
+        @media screen and (max-width: 800px) {
+            nav ul li.btn {
+                display: contents;
+            }
+
+            nav {
+                z-index: 999;
+                padding: 9px 40px 9px 0;
+            }
+
+            nav ul div.items {
+                z-index: 99;
+                position: fixed;
+                top: -220px;
+                right: 0;
+                width: 100%;
+                background: #222222;
+                display: inline-block;
+                transition: top .4s;
+            }
+
+            nav ul div.items.show {
+                top: 80px;
+            }
+
+            nav ul div.items li {
+                text-align: center;
+                line-height: 30px;
+                margin: 30px 0;
+            }
+
+            nav ul div.items li a {
+                font-size: 19px;
+                color: white;
+            }
+        }
+
+        @media screen and (max-width: 405px) {
+            nav ul {
+                flex-wrap: nowrap;
+            }
+
+            nav ul li.search {
+                width: 50vmin;
+            }
+
+            nav ul li input {
+                width: 40vmin;
+            }
+
+            nav ul li .search-icon {
+                width: 10vmin;
+            }
+        }
+
+
+
+        @media (max-width: 575.98px) {
+            img.logo {
+
+                margin-left: -122px;
+
+            }
+
+            .fa-bars:before {
+                content: "\f0c9";
+                margin-right: -242px;
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 991.98px) {
+            img.logo {
+
+                margin-left: -313px;
+
+            }
+
+            .fa-bars:before {
+                content: "\f0c9";
+                margin-right: -496px;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <a href="/accounts/"><img src="{% static 'img\shoparelogo.png' %}" class="logo" alt=""></a>
+                <li class="logo"><a href="/accounts/" style="color: white; text-decoration: none;">SHOPARE</a></li>
+                <li class="btn"><span class="fas fa-bars"></span></li>
+                <div class="items">
+
+                    {% if request.session.customer %}
+                    <li>
+                        <p><i class="fa fa-user"></i> {{request.session.customer_name}}</p>
+                    </li>
+                    <li><a href="cart"> <i class="fa fa-shopping-cart"></i> Cart
+                            {{request.session.cart.keys|length}}</a>
+                    </li>
+                    <li><a href="logout"><i class="fa fa-sign-out"></i> logout</a></li>
+                    {% else %}
+                    <li><a href="login"><i class="fa fa-user"></i> sign in</a></li>
+                    <li><a href="cart"> <i class="fa fa-shopping-cart"></i> Cart {{request.session.cart.keys|length}}</a>
+                    </li>
+                    {% endif %}
+                </div>
+            </ul>
+        </nav>
+    </header>
+    {% block content %}
+
+    {% endblock content %}
+    <script>
+        $('nav ul li.btn span').click(function () {
+            $('nav ul div.items').toggleClass("show");
+            $('nav ul li.btn span').toggleClass("show");
+        });
+    </script>
+    <script>
+        // Close onclick outside
+        document.addEventListener('click', (e) => {
+            const toggle = document.querySelector('.search__toggle')
+            const input = document.querySelector('.search__input')
+            const clickedElement = e.target
+
+            if (clickedElement == toggle) {
+                input.value = ''
+                return;
+            }
+
+            const isSearchField = clickedElement.closest('.search__field')
+
+            if (!isSearchField) {
+                toggle.checked = false
+                input.value = ''
+            }
+        })
+    </script>
+    
+
+</body>
+
+</html>

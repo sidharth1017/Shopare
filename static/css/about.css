@@ -1,0 +1,72 @@
+body{
+    font-family: gotham;
+}
+.values {
+    width: auto;
+   
+    margin: 20px auto;
+    padding-left: 40px;
+    display: flex;
+}
+
+.values ul {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+.values ul li {
+    list-style: none;
+    padding: 8px;
+    box-sizing: border-box;
+    float: left;
+}
+.containar {
+    width: auto;
+    margin: 20px auto;
+    padding-left: 40px;
+    display: flex;
+}
+
+.containar ul {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+.containar ul li {
+    color: black;
+    list-style: none;
+    padding: 8px;
+    box-sizing: border-box;
+    float: left;
+}
+.containar ul li p{
+    color: black;
+    list-style: none;
+    padding: 8px;
+    box-sizing: border-box;
+    float: left;
+}
+.card-img{
+    border: 7px solid black;
+    border-radius:50%; 
+}
+.text{
+    font-size: 22px;
+}
+.text1{
+    font-size: 24px;
+} 
+.text2{
+    font-size: 24px;
+    margin-top: 40px;
+}
+.textm{
+    font-size: 30px;
+    font-weight: bold;
+}
+.text-center{
+    font-size: 35px;
+    font-weight: bold;
+}

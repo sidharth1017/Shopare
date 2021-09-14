@@ -1,0 +1,934 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Description -->
+    <meta name="description" content="Shopare">
+    <!-- Keywords -->
+    <meta name="keywords" content="Shopare, Grocries">
+    <!-- author  -->
+    <meta name="author" content="Rudraksh Todwal">
+    <!-- Font Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Faviconlogo -->
+    <link rel="shortcut icon" href="static\img\favicon.png" type="image/x-icon">
+    <!-- title -->
+    {% block title %} <title>Shopare</title>{% endblock title %}
+
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        nav {
+            display: flex;
+            height: 80px;
+            width: 100%;
+            background: #1b1b1b;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 50px 0 100px;
+            flex-wrap: wrap;
+        }
+
+        nav .logo {
+            color: #fff;
+            font-size: 35px;
+            font-weight: 600;
+        }
+
+        nav ul {
+            display: flex;
+            flex-wrap: wrap;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin: 0 5px;
+        }
+
+        nav ul li a {
+            color: #f2f2f2;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 500;
+            padding: 8px 15px;
+            border-radius: 5px;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        nav ul li a.active,
+        nav ul li a:hover {
+            color: #111;
+            background: #fff;
+        }
+
+        nav .menu-btn i {
+            color: #fff;
+            font-size: 22px;
+            cursor: pointer;
+            display: none;
+        }
+
+        input[type="checkbox"] {
+            display: none;
+        }
+
+        @media (max-width: 1000px) {
+            nav {
+                padding: 0 40px 0 50px;
+            }
+        }
+
+        @media (max-width: 920px) {
+            nav .menu-btn i {
+                color: #fff;
+                font-size: 22px;
+                cursor: pointer;
+                display: block;
+            }
+
+            #click:checked~.menu-btn i:before {
+                content: "\f00d";
+            }
+
+            nav ul {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                background: #111;
+                height: 100vh;
+                width: 100%;
+                text-align: center;
+                display: block;
+                z-index: 999;
+                transition: all 0.3s ease;
+            }
+
+            #click:checked~ul {
+                left: 0;
+            }
+
+            nav ul li {
+                width: 100%;
+                margin: 40px 0;
+            }
+
+            nav ul li a {
+                width: 100%;
+                margin-left: -100%;
+                display: block;
+                font-size: 20px;
+                transition: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            }
+
+            #click:checked~ul li a {
+                margin-left: 0px;
+            }
+
+            nav ul li a.active,
+            nav ul li a:hover {
+                background: none;
+                color: cyan;
+            }
+        }
+
+        .content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: -1;
+            width: 100%;
+            padding: 0 30px;
+            color: #1b1b1b;
+        }
+
+        .content div {
+            font-size: 40px;
+            font-weight: 700;
+        }
+
+        nav ul li:nth-child(odd) {
+            animation: up 1s forwards;
+        }
+
+        nav ul li:nth-child(even) {
+            animation: down 1s forwards;
+        }
+
+        @keyframes up {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes down {
+            from {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .typewriter_cover {
+            width: 100%;
+            background-color: black;
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 50vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .containar p {
+            font-size: 2rem;
+            padding: 0.5rem;
+            letter-spacing: 0.1rem;
+            text-align: center;
+            overflow: hidden;
+            color: white;
+            height: 5em;
+            margin-top: -41px;
+        }
+
+        .containar p span.cursor {
+            display: inline-block;
+            background-color: #ccc;
+            margin-left: 0.1rem;
+            width: 3px;
+            animation: blink 1s infinite;
+
+        }
+
+        .containar p span.typed-text {
+            font-weight: normal;
+            color: #53FC53;
+        }
+
+        .butn-explore {
+            text-decoration: none;
+            background-color: #53FC53;
+            text-transform: uppercase;
+            border: none;
+            height: 50px;
+            border-radius: 7px;
+            font-size: 20px;
+            padding: 0px 50px;
+        }
+
+        .butn-explore:hover,
+        .butn-explore:active {
+            border: none;
+            transform: translateY(-3px);
+            color: #fff;
+            box-shadow: 0 10px 20px 0 rgba(255, 253, 253, 0.397);
+            transition-duration: .5s;
+        }
+
+
+        .search {
+            padding: 2em;
+            display: flex;
+            align-items: center;
+        }
+
+        .search-bar {
+            width: 80%;
+            padding: -0.1em;
+            font-size: 1.1em;
+            height: 3.6em;
+        }
+
+        .search-submit {
+            width: auto;
+            border: none;
+            background: #53FC53;
+            color: #111;
+            padding: 1em;
+            font-weight: bolder;
+            cursor: pointer;
+        }
+
+        .sub-title {
+            font-size: 1.5em;
+            color: grey;
+            font-weight: 300;
+            margin: 10px;
+            margin-left: 30px;
+        }
+
+        body {
+            font-family: gotham;
+            box-sizing: border-box;
+        }
+
+        a {
+            text-decoration: none;
+            outline: none;
+        }
+
+        .footer {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            flex-direction: row;
+        }
+
+        .footer-main-div {
+            width: 100%;
+            height: auto;
+            margin: auto;
+            background: black;
+            padding: 20px opx;
+        }
+
+
+
+        .footer-social-icons {
+
+            width: 100%;
+            height: auto;
+            margin: auto;
+        }
+
+        .footer-social-icons ul {
+            margin: 0px;
+            padding: 12px;
+            text-align: center;
+        }
+
+        .footer-social-icons ul li {
+
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            margin: 0px 10px;
+            border-radius: 50%;
+            background: #53FC53;
+        }
+
+        .footer-social-icons ul li a {
+            border: 1px solid white;
+            border-radius: 50%;
+            color: #272727;
+            font-size: 25px;
+            display: block;
+        }
+
+        .footer-social-icons ul li a:hover {
+            background-color: black;
+            color: #53FC53;
+        }
+
+        .footer-social-icons ul li a i {
+            line-height: 50px;
+
+        }
+
+        .headline {
+            text-align: left;
+            color: #53FC53;
+        }
+
+        .service {
+
+            text-align: left;
+            color: #53FC53;
+        }
+
+        .footer-menu-one {
+            width: 100%;
+            height: auto;
+            margin: auto;
+            margin-top: 30px;
+            box-sizing: border-box;
+        }
+
+        .footer-menu-one ul {
+            margin: opx;
+            padding: opx;
+            text-align: left;
+            list-style-type: none;
+        }
+
+        .footer-menu-one ul li {
+            display: list-item;
+            margin: 10px 15px;
+        }
+
+        .footer-menu-one ul li a {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 15px;
+            font-weight: 400;
+            color: #fff;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .footer-menu-one ul li a:hover {
+            color: plum;
+        }
+
+        .footer-menu-two {
+            overflow: hidden;
+            width: 100%;
+            height: auto;
+            margin: auto;
+            margin-top: 30px;
+            box-sizing: border-box;
+        }
+
+        .footer-menu-two ul {
+            margin: opx;
+            padding: opx;
+            text-align: left;
+            list-style-type: none;
+        }
+
+        .footer-menu-two ul li {
+
+            display: list-item;
+            margin: 10px 15px;
+        }
+
+        .footer-menu-two ul li a {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 15px;
+            font-weight: 400;
+            color: #fff;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .footer-menu-two ul li a:hover {
+            color: #53FC53;
+        }
+
+
+        /* FOOTER */
+        .footer {
+            width: 100%;
+            background: linear-gradient(rgb(0, 0, 0), rgb(0, 0, 0)), url("static\img\logo.png");
+            background-size: cover;
+            display: block;
+        }
+
+        .inner-footer {
+            width: 95%;
+            margin: auto;
+            padding: 30px 10px;
+            display: flex;
+            flex-wrap: wrap;
+            box-sizing: border-box;
+            justify-content: center;
+        }
+
+        .footer-items {
+            padding-top: 40px;
+            width: 25%;
+            padding: 10px 20px;
+            box-sizing: border-box;
+            color: #fff;
+        }
+
+        .footer-items p {
+            padding-top: 40px;
+            font-size: 19px;
+            color: #fff;
+        }
+
+        .footer-items img {
+            width: 100px;
+            height: 90px;
+        }
+
+        .footer-items h1 {
+            color: #fff;
+        }
+
+        .border1 {
+
+            height: 3px;
+            width: 40px;
+            background: crimson;
+            color: crimson;
+            background-color: crimson;
+            border: 0px;
+        }
+
+        .footer-items ul {
+            list-style: none;
+            color: #fff;
+            font-size: 15px;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-items ul a {
+
+            text-decoration: none;
+            outline: none;
+            color: #fff;
+            transition: 0.3s;
+        }
+
+        .footer-items ul a:hover {
+            color: Crimson;
+        }
+
+        .footer-items ul li {
+            margin: 10px 0;
+
+        }
+
+        .footer-items li i {
+            margin-right: 20px;
+        }
+
+        .footer-bottom {
+            text-decoration: none;
+            padding: 16px;
+            background-color: grey;
+            color: #000;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .footer-bottom a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .footer-bottom a:hover {
+            color: white;
+        }
+
+        .social-media {
+            width: 100%;
+            color: #fff;
+            text-align: center;
+            font-size: 20px;
+        }
+
+        .social-media a {
+            text-decoration: none;
+        }
+
+        .social-media i {
+            height: 25px;
+            width: 25px;
+            margin: 20px 10px;
+            padding: 4px;
+            color: #fff;
+            transition: 0.5s;
+        }
+
+        .social-media i:hover {
+            transform: scale(1.5);
+        }
+
+        /* for tablet mode view */
+
+        @media screen and (max-width: 1275px) {
+            .footer-items {
+                width: 50%;
+            }
+        }
+
+        /* for mobile screen view */
+
+        @media screen and (max-width: 660px) {
+            .footer-items {
+                width: 100%;
+            }
+        }
+
+
+        h1,
+        h2,
+        a,
+        p {
+            font-family: helvetica, sans-serif;
+        }
+
+        h1 {
+            font-size: 3em;
+            text-align: center;
+            color: #53FC53;
+            margin: 0;
+            padding: 30vh 0 1em;
+        }
+
+        h2 {
+            text-align: center;
+            white-space: nowrap;
+            color: #53FC53;
+            text-decoration: underline;
+        }
+
+        a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        p {
+            text-align: left;
+        }
+
+        .popup {
+            position: fixed;
+            padding: 10px;
+            max-width: 800px;
+            border-radius: 10px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, .9);
+            visibility: hidden;
+            opacity: 0;
+            /* "delay" the visibility transition */
+            -webkit-transition: opacity .5s, visibility 0s linear .5s;
+            transition: opacity .5s, visibility 0s linear .5s;
+            z-index: 1;
+            overflow-y: scroll !important;
+            max-height: 700px;
+        }
+
+        .popup:target {
+            visibility: visible;
+            opacity: 1;
+            /* cancel visibility transition delay */
+            -webkit-transition-delay: 0s;
+            transition-delay: 0s;
+        }
+
+        .popup-close {
+            position: absolute;
+            padding: 10px;
+            max-width: 500px;
+            border-radius: 10px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, .9);
+        }
+
+        .popup .close {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            padding: 5px;
+            color: #000;
+            transition: color .3s;
+            font-size: 2em;
+            line-height: .6em;
+            font-weight: bold;
+        }
+
+        .popup .close:hover {
+            color: #00E5EE;
+        }
+
+        .close-popup {
+            background: rgba(0, 0, 0, .7);
+            cursor: default;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0;
+            visibility: hidden;
+            /* "delay" the visibility transition */
+            -webkit-transition: opacity .5s, visibility 0s linear .5s;
+            transition: opacity .5s, visibility 0s linear .5s;
+        }
+
+        .popup:target+.close-popup {
+            opacity: 1;
+            visibility: visible;
+            /* cancel visibility transition delay */
+            -webkit-transition-delay: 0s;
+            transition-delay: 0s;
+        }
+
+        @media screen and (max-width: 768px) {
+            .popup {
+                position: fixed;
+                padding: 10px;
+                max-width: revert;
+                border-radius: 10px;
+                top: 51%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: rgba(255, 255, 255, .9);
+                visibility: hidden;
+                opacity: 0;
+                -webkit-transition: opacity .5s, visibility 0s linear .5s;
+                transition: opacity .5s, visibility 0s linear .5s;
+                z-index: 1;
+                overflow-y: scroll !important;
+                max-height: 534px;
+                width: -webkit-fill-available;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="logo"> <a href="#"><img src="static\img\shoparelogo.png"
+                    style="width: 60px; height: 59px; margin-top: 10px; margin-left:-48px;" class="logo" alt=""></a>
+        </div>
+        <div class="logo"><a style="color: white;" href="/">SHOPARE</a></div>
+        <input type="checkbox" id="click">
+        <label for="click" class="menu-btn">
+            <i class="fa fa-bars"></i>
+        </label>
+        <ul>
+            <li><a class="active" href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/accounts/login">Log in</a></li>
+            <li><a href="/accounts/register">Sign up</a></li>
+        </ul>
+    </nav>
+
+    {% block content %}
+
+    {% endblock content %}
+    <!--  FOOTER START -->
+
+    <div class="footer">
+        <div class="inner-footer">
+
+            <!--  for company name and description -->
+            <div class="footer-items">
+                <img src="static\img\shoparelogo.png" alt="">
+                <h4>SHOPARE</h4>
+                <p>The purpose of a BUSINESS is to create a customer who creates customers!!</p>
+            </div>
+
+            <!--  for quick links  -->
+            <div class="footer-items">
+                <h3>Quick Links</h3>
+                <div class="border1"></div>
+                <!--for the underline -->
+                <ul>
+                    <a href="/">
+                        <li><i class='fa fa-angle-right'></i>Home</li>
+                    </a>
+                    <a href="/about">
+                        <li><i class='fa fa-angle-right'></i>About US</li>
+                    </a>
+                    <a href="/contact">
+                        <li><i class='fa fa-angle-right'></i>Contact</li>
+                    </a>
+                    <a href="accounts/register">
+                        <li><i class='fa fa-angle-right'></i>Sign Up</li>
+                    </a>
+                    <a href="accounts/login">
+                        <li><i class='fa fa-angle-right'></i>Log In</li>
+                    </a>
+
+                </ul>
+            </div>
+            <div class="footer-items">
+                <h3>Policy</h3>
+                <div class="border1"></div>
+                <!--for the underline -->
+                <ul>
+                    <a href="#popup1">
+                        <li><i class='fa fa-angle-right'></i>Privacy Policy</li>
+                    </a>
+                    <a href="#popup2">
+                        <li><i class='fa fa-angle-right'></i>Terms and Conditions</li>
+                    </a>
+                </ul>
+            </div>
+
+            <!--  for contact us info -->
+            <div class="footer-items">
+                <h3>Contact us</h3>
+                <div class="border1"></div>
+                <ul>
+                    <li><i class="fa fa-map-marker-alt"></i>JAIPUR - 302015 <br>(RAJ.), INDIA</li>
+                    <li><i class="fa fa-phone" aria-hidden="true"></i><a href="tel:9511555730">+91 9511555730</a> </li>
+                    <li><i class="fa fa-envelope" aria-hidden="true"></i><a
+                            href="mail: support@shopare.in">Support@Shopare.in</a></li>
+                </ul>
+
+                <!--   for social links -->
+                <div class="social-media" style="color: white;">
+                    <a href="https://www.facebook.com/Shopare-614798372524692" style="color: white;"><i
+                            class="fa fa-facebook-square"></i></a>
+                    <a href="https://www.instagram.com/the_shopare/" style="color: white;"><i
+                            class="fa fa-instagram"></i></a>
+                    <a href="" style="color: white;"><i class="fa fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com/in/the-shopare-61500218a/" style="color: white;"><i
+                            class="fa fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!--   Footer Bottom start  -->
+        <div class="footer-bottom">
+            Desgined & Developed by: <a href="http://webdevelopersfactory.pythonanywhere.com/" target="blank">Web
+                Developers Factory</a> <br> Copyright &copy; Shopare 2021.
+
+        </div>
+    </div>
+
+
+    <div id="popup1" class="popup">
+        <a href="#" class="close">&times;</a>
+        <h2>PRIVACY POLICY</h2>
+        <hr>
+        <p><b>Your privacy is important to us</b><br>
+            <b>Shopare is located at:</b><br>
+            M-114 Gordhan Apartment , mahesh colony , tonk road Near Jp phatak underpass, Jaipur<br>
+            302015 Rajasthan , India.<br>
+
+            It is Shopare's policy to respect your privacy regarding any information we may collect while operating our
+            website. This Privacy Policy applies to www.shopare.in (hereinafter, "us", "we", or "www.shopare.in"). We
+            respect your privacy and are committed to protecting personally identifiable information you may provide us
+            through the Website. We have adopted this privacy policy ("Privacy Policy") to explain what information may
+            be collected on our Website, how we use this information, and under what circumstances we may disclose the
+            information to third parties. This Privacy Policy applies only to information we collect through the Website
+            and does not apply to our collection of information from other sources. <br>
+
+            This Privacy Policy, together with the Terms of service posted on our Website, set forth the general rules
+            and policies governing your use of our Website. Depending on your activities when visiting our Website, you
+            may be required to agree to additional terms of service.<br>
+
+            <b> CONTENT:</b><br>
+
+            Contact Information & Credit<br>
+            <b>1. Personally-Identifying Information</b><br>
+            Certain visitors to Shopare's websites choose to interact with Shopare in ways that require Shopare to
+            gather personally-identifying information. The amount and type of information that Shopare gathers depends
+            on the nature of the interaction. For example, we ask visitors who leave a comment at http://www.shopare.in
+            to provide a username and email address<br>
+
+
+
+            <b>2. Security</b><br>
+            The security of your Personal Information is important to us, but remember that no method of transmission
+            over the Internet, or method of electronic storage is 100% secure. While we strive to use commercially
+            acceptable means to protect your Personal Information, we cannot guarantee its absolute security.<br>
+
+            <b>3. Aggregated Statistics</b><br>
+            Shopare may collect statistics about the behavior of visitors to its website. Shopare may display this
+            information publicly or provide it to others. However, Shopare does not disclose your personally-identifying
+            information.<br>
+
+            <b>4. E-commerce</b><br>
+            Those who engage in transactions with Shopare – by purchasing Shopare's services or products, are asked to
+            provide additional information, including as necessary the personal and financial information required to
+            process those transactions. In each case, Shopare collects such information only insofar as is necessary or
+            appropriate to fulfill the purpose of the visitor's interaction with Shopare. Shopare does not disclose
+            personally-identifying information other than as described below. And visitors can always refuse to supply
+            personally-identifying information, with the caveat that it may prevent them from engaging in certain
+            website-related activities.<br>
+
+
+            <b>5. Privacy Policy Changes</b><br>
+            Although most changes are likely to be minor, Shopare may change its Privacy Policy from time to time, and
+            in Shopare's sole discretion. Shopare encourages visitors to frequently check this page for any changes to
+            its Privacy Policy. Your continued use of this site after any change in this Privacy Policy will constitute
+            your acceptance of such change.<br>
+        </p>
+    </div>
+    <a href="#" class="close-popup"></a>
+    <div id="popup2" class="popup">
+        <a href="#" class="close">&times;</a>
+        <h2>TERMS AND CONDITIONS</h2>
+        <p>This popup can be closed by clicking the fancy <b>×</b> in the top right corner or by
+            clicking outside the popup box! Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam illo
+            temporibus, velit minima magnam sunt culpa. Ea amet error eaque corrupti dolorem unde praesentium
+            dignissimos natus, fugit provident enim eum delectus asperiores? Illum neque facere pariatur, delectus id
+            accusamus praesentium repellendus voluptas perspiciatis nobis itaque totam sed deserunt quidem cupiditate
+            cumque placeat nesciunt? Quas nihil maiores soluta quis molestiae architecto consectetur ducimus magni minus
+            ipsum similique assumenda optio sapiente, beatae praesentium voluptatem. Saepe, odio. Repudiandae quasi nisi
+            vitae odio atque numquam illo, dignissimos sed aspernatur nobis, iure corporis modi at ad quaerat ratione
+            iste facilis expedita et animi sequi aut, veniam debitis vel. Quidem assumenda repellat eveniet dolore
+            expedita iste corrupti minima laborum dignissimos autem illum fugiat quos voluptatem vitae quasi suscipit,
+            alias id ipsam obcaecati dolores impedit voluptatum sapiente, temporibus praesentium. Nihil error minima hic
+            quisquam distinctio? Sint, atque perferendis eaque velit explicabo eius. Neque, voluptates debitis! Deserunt
+            consequatur sint quas tenetur labore dolorem ad qui autem laboriosam totam? Reprehenderit in maiores magni
+            voluptates, neque expedita unde laboriosam ullam vero vel. Consequuntur neque cumque a voluptatibus,
+            praesentium suscipit alias molestias provident laudantium tempore? Esse, accusantium libero! Corrupti
+            perspiciatis sed velit. Laboriosam voluptates eveniet mollitia explicabo hic rerum eligendi qui? Lorem,
+            ipsum dolor sit amet consectetur adipisicing elit. Harum dicta maxime sit laudantium qui consectetur
+            doloribus natus architecto corporis reprehenderit animi fuga ipsam omnis ad iste provident, adipisci ab
+            placeat rem exercitationem temporibus tenetur? Impedit quas magnam hic, enim veritatis ab iusto fugiat,
+            placeat voluptates, voluptatem nesciunt? Deserunt distinctio quaerat optio corrupti, dolor, velit sint
+            delectus architecto fugiat voluptatem, consectetur dicta quisquam sequi voluptate suscipit. Eveniet
+            repellendus ratione praesentium cum itaque dolore corporis debitis aperiam ex quis beatae modi repellat sint
+            id nam tempora aliquid quibusdam incidunt mollitia, fugiat molestias distinctio harum ullam. Eum molestiae
+            enim perspiciatis aperiam, temporibus facilis dignissimos impedit fugit praesentium doloremque quae ex vel
+            pariatur deleniti obcaecati ipsa reprehenderit eveniet qui cumque magnam provident commodi eius. Tempora nam
+            modi deleniti dignissimos cum mollitia nobis dicta quas dolor? Cum nesciunt odit consequuntur excepturi
+            tempora asperiores incidunt ea deleniti. Hic facilis eos exercitationem, voluptatum commodi soluta dolorum
+            magnam mollitia voluptate earum possimus sed amet dicta ab distinctio voluptas similique nobis laboriosam
+            autem quod vitae porro cum. Ad quidem, id earum commodi corrupti at minus nam ipsam accusamus ullam quaerat
+            asperiores, illo doloremque exercitationem provident beatae sed deserunt iste. Fugiat, corporis possimus?
+            Minus tempora nostrum harum, natus quia placeat perferendis, unde aliquam pariatur, temporibus tempore!
+            Ducimus aliquid exercitationem ullam aut tempora ipsa error eius consectetur tempore explicabo maxime nihil
+            harum, quis quidem illum necessitatibus. Ullam quae dignissimos asperiores nulla perspiciatis ipsam, quidem
+            in eos unde minima quibusdam vel accusantium sequi, dolor id blanditiis incidunt quo. Nulla dolorem facilis
+            assumenda error reprehenderit eos vero et mollitia dolor ea! Nulla magnam asperiores reiciendis provident
+            libero, velit ipsam doloremque numquam similique ducimus sequi nobis perspiciatis. Vel, sed! Soluta,
+            deleniti. Illum voluptate voluptatibus facilis possimus distinctio ut labore, suscipit assumenda quam
+            voluptatum? Soluta illum ipsum ab magni consequatur officia dolor voluptatum saepe necessitatibus ducimus.
+            Nesciunt, minus illo, eum animi itaque architecto, iste doloremque soluta aspernatur velit placeat
+            dignissimos perferendis distinctio vitae recusandae quibusdam atque iusto nostrum ipsam commodi sint autem.
+            Cumque vitae quod consectetur obcaecati commodi a nisi tempore quas? Debitis quidem corporis fuga rerum
+            consequatur dolorem molestiae ipsa harum ut quasi ad, accusantium sapiente ea quod facere? Eaque tenetur
+            doloremque omnis nisi quia aut eveniet aperiam quibusdam reiciendis voluptatum, maxime ullam blanditiis
+            voluptas provident mollitia optio deserunt necessitatibus architecto autem quam quos! Accusantium blanditiis
+            maxime sequi quam totam eaque in provident quia ad! At, laboriosam similique mollitia quis soluta ex
+            voluptate, repellendus ratione, cupiditate ipsam commodi! Officiis sunt repellat eum illo non asperiores
+            facilis voluptatem fuga eveniet iste nisi aut eius culpa quis ea quae, alias accusamus voluptatum similique
+            doloribus eaque harum laborum. Molestiae voluptatem dolor cum quae voluptas aperiam corporis temporibus illo
+            praesentium. Magni nobis eligendi tempore consequatur debitis, numquam cupiditate dolores quisquam aliquid
+            tenetur magnam nisi deleniti pariatur exercitationem sunt consectetur sint fuga porro excepturi, perferendis
+            nemo voluptatem. Earum soluta id harum totam sunt. Maxime, aliquam. Ipsa, dolores deleniti! Eius at velit,
+            alias excepturi ipsa nulla non accusantium necessitatibus culpa maxime quas sint ratione aspernatur, dicta
+            odio eveniet quam mollitia.</p>
+    </div>
+    <a href="#" class="close-popup"></a>
+
+    <!--   Footer Bottom end -->
+
+    <!--   FOOTER END -->
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+</body>
+
+</html>

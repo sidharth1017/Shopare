@@ -1,0 +1,646 @@
+{% extends 'base2.html' %}
+{% block content %}
+
+{% block title %}<title>Shopare | Search </title>{% endblock title %}
+{% load static %}
+{% load cart %}
+
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+<link rel="stylesheet" href="{% static 'css/yellow.css' %}">
+<link rel="stylesheet" href="{% static 'css/red.css' %}">
+<link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+
+<style>
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: "Poppins";
+    }
+
+    p {
+        font-size: 15px;
+        font-family: "lato";
+        line-height: 28px;
+        color: #9fa4af;
+        display: inline-block;
+        letter-spacing: 0.5px;
+    }
+
+    ul li,
+    ol li {
+        font-family: "Poppins";
+    }
+
+    .block {
+        float: left;
+        padding: 16px 0;
+        position: relative;
+        width: 100%;
+    }
+
+    a,
+    a:hover,
+    a:focus,
+    a:active {
+        color: black;
+        outline: none;
+        -webkit-text-decoration: none;
+        -moz-text-decoration: none;
+        -ms-text-decoration: none;
+        -o-text-decoration: none;
+        text-decoration: none;
+    }
+
+    .row {
+        display: flex;
+        justify-content: center;
+    }
+
+    .cards-list {
+        width: 50%;
+        margin: 1em auto;
+        color: black;
+    }
+
+    .cards-list i {
+        text-align: center;
+        color: black;
+    }
+
+    .h1,
+    h1 {
+        font-size: 36px;
+        text-align: center;
+    }
+
+    .homecard {
+        border: 1px solid #eee;
+        padding: 1em;
+        margin: 1em;
+        height: 30vh;
+        position: relative;
+        box-shadow: 0px 0px 3px 3px #f7f7f7;
+    }
+
+    .homecard:hover {
+        background: #ffffff;
+        border: 1px solid gold;
+        box-shadow: 0px 0px 0px #eee;
+    }
+
+    .homecard h2 {
+        color: black;
+        font-size: 2.5em;
+        position: absolute;
+        top: 0em;
+        left: 5em;
+    }
+
+    .homecard h5 {
+        color: rgb(138, 135, 135);
+        font-size: 1.5em;
+        position: absolute;
+        top: 2.4em;
+        left: 8.3em;
+    }
+
+    .homecard p {
+        position: absolute;
+        top: 5em;
+        left: 11.6em;
+    }
+
+    .homecard img {
+        width: 150px;
+    }
+
+    .homecard a:link,
+    .homecard a:visited {
+        width: 8em;
+        color: #000000;
+        background-color: hsla(0, 0%, 100%, 0.5);
+        border-radius: 0px;
+        bottom: 1em;
+        right: 1em;
+        position: absolute;
+        padding: 1em 1em;
+        text-align: initial;
+        font-weight: bold;
+        line-height: 1;
+    }
+
+    .homecard a:hover {
+        text-decoration: none;
+    }
+
+    .cont {
+        position: relative;
+        top: 60%;
+        left: 60%;
+        transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+        display: inline-block;
+    }
+
+    .cart {
+        outline: none;
+        border: 0;
+        background: #3e87f2;
+        padding: 10px;
+        color: #fff;
+        width: 100%;
+        position: relative;
+        z-index: 2;
+        cursor: pointer;
+        transition: 0.5s width;
+    }
+
+    .cart_clk {
+        width: calc(100% - 75px);
+    }
+
+    .crtdiv {
+        border: 1px solid #7d86c7;
+        width: 227px;
+        border-radius: 4px;
+        position: relative;
+        background: #eee;
+    }
+
+    .fa {
+        font-size: 16px;
+    }
+
+    .cart .fa {
+        font-size: 26px;
+        position: relative;
+        padding: 0 5px 0 0;
+    }
+
+    .cart .fa:after {
+        position: absolute;
+        content: attr(data-before);
+        color: #34ff34;
+        font-family: 'Lato', sans-serif;
+        left: 11px;
+        font-weight: bold;
+        top: 5px;
+        font-size: 12px;
+    }
+
+    .qty {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        -webkit-transform: translateY(-50%);
+        color: #416AA6;
+    }
+
+    .dec,
+    .inc {
+        cursor: pointer;
+    }
+
+    .num {
+        width: 22px;
+        display: inline-block;
+        text-align: Center;
+    }
+
+    @media (max-width: 768px) {
+        .cards-list {
+            margin: 1em auto;
+            color: black;
+            width: auto;
+        }
+
+        .homecard img {
+            width: 9em;
+            margin-left: -14px;
+        }
+
+        .homecard h2 {
+            margin: 0;
+            padding: 0;
+            color: black;
+            font-size: 1.5em;
+            position: absolute;
+            top: 1em;
+            left: 6em;
+        }
+
+        .homecard h5 {
+            margin: 0;
+            padding: 0;
+            color: rgb(138, 135, 135);
+            font-size: 1em;
+            position: absolute;
+            top: 3.5em;
+            left: 9.2em;
+        }
+
+        .homecard p {
+            top: 4em;
+            left: 8.5em;
+        }
+
+        .cont {
+            position: relative;
+            top: 64%;
+            left: 37%;
+            transform: translate(-50%, -50%);
+            -webkit-transform: translate(-50%, -50%);
+            display: inline-block;
+        }
+
+
+        .crtdiv {
+            border: 1px solid #7d86c7;
+            width: 157px;
+            border-radius: 4px;
+            position: relative;
+            background: #eee;
+        }
+    }
+
+    .qty-input {
+        color: #000;
+        background: #fff;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        justify-content: center;
+    }
+
+    .qty-input {
+        border-radius: 4px;
+        transform: scale(1.5);
+        width: 6em;
+        margin: auto;
+        border: 1px solid black;
+    }
+
+    .qty-input .product-qty,
+    .qty-input .qty-count {
+        background: transparent;
+        color: inherit;
+        font-weight: bold;
+        font-size: inherit;
+        border: none;
+        display: inline-block;
+        min-width: 0;
+        height: 2.5rem;
+        line-height: 1;
+    }
+
+    .qty-input .product-qty:focus,
+    .qty-input .qty-count:focus {
+        outline: none;
+    }
+
+    .qty-input .product-qty {
+        width: 50px;
+        min-width: 0;
+        display: inline-block;
+        text-align: center;
+        -webkit-appearance: textfield;
+        -moz-appearance: textfield;
+        appearance: textfield;
+        height: auto;
+    }
+
+    .qty-input .product-qty::-webkit-outer-spin-button,
+    .qty-input .product-qty::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        appearance: none;
+        margin: 0;
+    }
+
+    .qty-input .qty-count {
+        padding: 0;
+        cursor: pointer;
+        width: 2.5rem;
+        font-size: 1.25em;
+        text-indent: -100px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .qty-input .qty-count:before,
+    .qty-input .qty-count:after {
+        content: "";
+        height: 2px;
+        width: 10px;
+        position: absolute;
+        display: block;
+        background: #000;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+
+    .qty-input .qty-count--minus {
+        border-right: 1px solid #e2e2e2;
+    }
+
+    .qty-input .qty-count--add {
+        border-left: 1px solid #e2e2e2;
+    }
+
+    .qty-input .qty-count--add:after {
+        transform: rotate(90deg);
+    }
+
+    .qty-input .qty-count:disabled {
+        color: #ccc;
+        background: #f2f2f2;
+        cursor: not-allowed;
+        border-color: transparent;
+    }
+
+    .qty-input .qty-count:disabled:before,
+    .qty-input .qty-count:disabled:after {
+        background: #ccc;
+    }
+
+
+    .qty-input {
+        border-radius: 4px;
+        box-shadow: 0 1em 2em -0.9em rgba(0, 0, 0, 0.7);
+        transform: scale(1.5);
+    }
+
+    .sear {
+        margin-top: 26px;
+    }
+
+    .search {
+        position: absolute;
+        left: 50%;
+        width: 100%;
+        max-width: 400px;
+        height: 50px;
+        transform: translateX(-50%) translateY(-50%);
+    }
+
+    .search__toggle:checked~.search__field {
+        width: calc(100% - 80px);
+        border-width: 2px;
+    }
+
+    .search__toggle:checked~.search__field .search__input::placeholder {
+        opacity: 1;
+    }
+
+    .search__toggle:checked~.search__field .search__close {
+        left: -25px;
+    }
+
+    .search__toggle:checked~.search__field .search__button {
+        right: 5px;
+        width: 35px;
+        height: 35px;
+        border-radius: 50px;
+    }
+
+    .search__toggle:checked~.search__field .search__button--toggle {
+        display: none;
+    }
+
+    .search__toggle:checked~.search__field .search__button--submit {
+        display: flex;
+    }
+
+    .search__close {
+        position: relative;
+        top: 50%;
+        left: 0;
+        transform: translateX(-50%);
+        transition: 0.3s;
+    }
+
+    .search__close::before,
+    .search__close::after {
+        position: absolute;
+        display: block;
+        content: "";
+        width: 15px;
+        height: 3px;
+        background-color: white;
+        margin-top: 10px;
+        ;
+    }
+
+    .search__close::before {
+        transform: rotate(45deg);
+    }
+
+    .search__close::after {
+        transform: rotate(-45deg);
+    }
+
+    .search__field {
+        position: absolute;
+        right: 0;
+        left: 50%;
+        width: 40px;
+        height: 45px;
+        border: 0px solid white;
+        border-radius: 50px;
+        transform: translateX(-50%);
+        transform-origin: right;
+        transition: 0.3s;
+    }
+
+    .search__input {
+        position: absolute;
+        left: 0;
+        box-sizing: border-box;
+        width: calc(100% - 40px);
+        height: 100%;
+        padding: 5px 15px;
+        color: white;
+        background-color: transparent;
+        border: 0;
+        outline: none;
+        font-family: "Roboto", sans-serif;
+        font-size: 16px;
+    }
+
+    .search__input::placeholder {
+        color: white;
+        opacity: 0;
+        transition: 0.3s;
+        transition-delay: 0.3s;
+    }
+
+    .search__label {
+        cursor: pointer;
+    }
+
+    .search__button {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50px;
+        height: 50px;
+        background-color: white;
+        border-radius: 5px;
+        transform: translateY(-50%);
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .search__button--submit {
+        display: none;
+        border: 0;
+    }
+
+    .search__icon {
+        position: relative;
+        width: 19px;
+        height: 19px;
+    }
+
+    .search__icon::before {
+        display: block;
+        content: "";
+        width: 12px;
+        height: 12px;
+        background-color: transparent;
+        border: 2px solid #0099ff;
+        border-radius: 50px;
+    }
+
+    .search__icon::after {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        display: block;
+        content: "";
+        width: 8px;
+        height: 2px;
+        background-color: #0099ff;
+        transform: rotate(45deg);
+        transform-origin: right;
+    }
+
+    section {
+        margin-top: 60px;
+    }
+
+    .button {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+
+    .navbar {
+        background-color: rgb(51, 51, 51);
+        margin-top: 0em;
+        width: inherit;
+        border-radius: 0px;
+    }
+</style>
+<div class="navbar" id="myNavbar">
+    <div class="sear">
+        <form class="search" action="/accounts/search2" method="GET">
+            <input type="checkbox" id="toggleSearch" class="search__toggle" hidden />
+            <div class="search__field">
+                <label for="toggleSearch" class="search__label">
+                    <span class="search__close"></span>
+                </label>
+                <input type="text" class="search__input" name="search" placeholder="What are you looking for?" />
+                <label for="toggleSearch" class="search__label">
+                    <div class="search__button">
+                        <div class="search__icon search__button--toggle"></div>
+                    </div>
+                    <button type="submit" class="search__button search__button--submit">
+                        <div class="search__icon"></div>
+                    </button>
+                </label>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+<section>
+    <div class="cards-list">
+        <h1>You are Searching for : {{query}}<br></h1>
+    </div>
+    <hr class="clearfix">
+    {% if products %}
+    <div class="cards-list">
+
+        {% for product in products %}
+        <div class="homecard" id="{{product.id}}">
+            <h2>{{product}}</h2>
+            <h5>₹{{product.price}}</h5>
+            <img src="{{product.image.url}}" alt="">
+            <p>{{product.description}}</p>
+            {% if product|is_in_cart:request.session.cart %}
+            <div class="cont">
+                <div class="qty-input">
+                    <form action="indianbakery#{{product.id}}" method="POST">
+                        {% csrf_token %}
+                        <input hidden style="color: black;" type="text" name="product" value="{{product.id}}">
+                        <input hidden style="color: black;" type="text" name="remove" value="True">
+                        <button class="qty-count qty-count--minus" data-action="minus" type="submit">-</button>
+                    </form>
+                    <div class="product-qty">{{product|cart_count:request.session.cart}}</div>
+                    <form action="indianbakery#{{product.id}}" method="POST">
+                        {% csrf_token %}
+                        <input hidden style="color: black;" type="text" name="product" value="{{product.id}}">
+                        <button class="qty-count qty-count--add" data-action="add" type="submit">+</button>
+                    </form>
+                </div>
+            </div>
+            {% else %}
+            <div class="cont">
+                <div class="crtdiv">
+                    <form action="indianbakery#{{product.id}}" method="POST">
+                        {% csrf_token %}
+                        <input hidden style="color: black;" type="text" name="product" value="{{product.id}}">
+                        <input type="submit" id="btn" class="cart" value="Add">
+                    </form>
+                </div>
+            </div>
+            {% endif %}
+
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="cards-list">
+        <h1>NO RESULTS</h1>
+    </div>
+    {% endif %}
+    <hr class="clearfix">
+</section>
+
+<hr class="clearfix">
+</section>
+
+{%load static %}
+<script src="{% static '/js/main.js' %}"></script>
+<script src="{% static '/js/jquery.js' %}"></script>
+<script src="{% static '/js/plugin.js' %}"></script>
+{% endblock content %}

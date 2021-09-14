@@ -1,0 +1,113 @@
+{% extends 'base2.html' %}
+{% block content %}
+
+{% block title %}<title>Shopare | Stores | Bakery </title>{% endblock title %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+<link rel="stylesheet" href="{% static 'css/yellow.css' %}">
+<link rel="stylesheet" href="{% static 'css/red.css' %}">
+<link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+
+<style>
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: "Poppins";
+    }
+
+    p {
+        font-size: 15px;
+        font-family: "lato";
+        line-height: 28px;
+        color: #9fa4af;
+        display: inline-block;
+        letter-spacing: 0.5px;
+    }
+
+    ul li,
+    ol li {
+        font-family: "Poppins";
+    }
+
+    .block {
+        float: left;
+        padding: 77px 0;
+        position: relative;
+        width: 100%;
+    }
+
+    a,
+    a:hover,
+    a:focus,
+    a:active {
+        color: black;
+        outline: none;
+        -webkit-text-decoration: none;
+        -moz-text-decoration: none;
+        -ms-text-decoration: none;
+        -o-text-decoration: none;
+        text-decoration: none;
+    }
+
+    .row {
+        display: flex;
+        justify-content: center;
+    }
+</style>
+
+<section>
+    <div class="block">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-lg-12">
+                    <div class="title1-wrapper text-center">
+                        <div class="title1-inner">
+                            <h1 style="color: red; text-decoration: underline;">STORE</h1>
+                            <!-- <h2 itemprop="headline">Fashion, Beauty & Models</h2> -->
+                        </div>
+                    </div>
+                    <div class="row remove-ext5">
+                        <div class="col-md-4 col-sm-6 col-lg-4">
+                            <div class="popular-dish-box wow fadeIn" data-wow-delay="0.2s">
+                                <div class="popular-dish-thumb">
+                                    <a href="/accounts/indianbakery" title="" itemprop="url"><img
+                                            src="{% static 'img\indianbakery.jpg' %}" alt="popular-dish-img1.jpg"
+                                            itemprop="image"></a>
+                                </div>
+                                <div class="popular-dish-info">
+                                    <h4 itemprop="headline"><a href="/accounts/indianbakery" title="" itemprop="url">
+                                            INDIAN BAKERY</a>
+                                    </h4>
+                                    <p itemprop="description">We Serve You Best!!
+                                    </p>
+                                    <a class="brd-rd2" href="/accounts/indianbakery" title="Order Now"
+                                        itemprop="url">Explore Now</a>
+                                    <div class="Merchant-info">
+                                        <div class="Merchant-info-inner">
+                                            <h6 itemprop="headline">
+                                                <p>M-114 Mahesh colony,<br>Jaipur,302015</p>
+                                            </h6>
+                                            <span class="red-clr"><a href="tel:+91 9511555730">9511555730</a></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- Popular Dish Box -->
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+<!--choose and enjoy meal -->
+{%load static %}
+<script src="{% static '/js/main.js' %}"></script>
+<script src="{% static '/js/jquery.js' %}"></script>
+<script src="{% static '/js/plugin.js' %}"></script>
+{% endblock content %}

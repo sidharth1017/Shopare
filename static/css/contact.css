@@ -1,0 +1,24 @@
+body {
+    font-family: gotham;
+    background-color: white;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+
+}
+
+.text-center {
+    margin-top: 10px;
+}
+
+.form-group {
+    margin-top: 20px;
+    margin-left: 60px;
+    margin-right: 60px;
+}
+
+.details {
+    text-decoration: none;
+    margin-left: 60px;
+    margin-bottom: 60px;
+}

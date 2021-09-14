@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+  {% load static %}
+  <link rel="shortcut icon" href="{%static 'img/favicon.png'  %}" type="image/x-icon">
+
+  <title>Shopare | Login </title>
+  {% load static %} <!-- loading static files -->
+  <!-- Link Css -->
+  <link rel="stylesheet" href="{% static 'css\credential.css' %}">
+  <style>
+   .alert-danger {
+      height: 3em;
+      padding-left: 10px;
+      padding-right: 10px;
+      padding-top: 10px;
+      width: auto;
+      background-color: rgb(243, 124, 124);
+      border: 1px solid rgb(252, 0, 0);
+      border-radius: 5px;
+      
+    }
+
+    @media (max-width: 870px){ .container {
+      min-height: 62em;
+      height: 100vh;
+    }}
+
+    .transparent{
+      color: white;
+    }
+    .transparent:hover{
+      color: black;
+      background-color: white;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="forms-container">
+      <div class="signin-signup">
+        <form action="login" method='post' class="sign-in-form">
+          {% csrf_token %}
+
+          <h2 class="title">Log in</h2>
+          {% if error %}
+          <div class="alert alert-danger" role="alert">
+            <p>{{error}}</p>
+          </div>
+          {% endif %}
+          <div class="input-field">
+            <i class="fas fa-user"></i>
+            <input type="email" name="email" placeholder="Email" />
+          </div>
+          <div class="input-field">
+            <i class="fas fa-lock"></i>
+            <input type="password" name="password" placeholder="Password" />
+          </div>
+          <input type="submit" value="Login" class="btn solid" />
+          <p class="social-text">Connect with social platforms</p>
+          <div class="social-media">
+            <a href="https://www.facebook.com/Shopare-614798372524692" class="social-icon">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://www.instagram.com/the_shopare/" class="social-icon">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="social-icon">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/the-shopare-61500218a/" class="social-icon">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+          </div>
+        </form>
+
+        <div>
+          {% for message in messages %}
+          <h3>
+            {{message}}
+          </h3>
+          {% endfor %}
+        </div>
+
+        <form action="register" method="post" class="sign-up-form">
+          {% csrf_token %}
+
+          <h2 class="title">Sign up</h2>
+          {% if error %}
+          <div class="alert alert-danger" role="alert">
+            <p>{{error}}</p>
+          </div> 
+          {% endif %}
+          <div class="input-field">
+            <i class="fas fa-user"></i>
+            <input type="text" name="firstname" placeholder="Firstname" />
+          </div>
+          <div class="input-field">
+            <i class="fas fa-user"></i>
+            <input type="text" name="lastname" placeholder="Lastname" />
+          </div>
+          <div class="input-field">
+            <i class="fas fa-phone"></i>
+            <input type="text" name="phone" placeholder="Phone No." />
+          </div>
+          <div class="input-field">
+            <i class="fas fa-envelope"></i>
+            <input type="email" name="email" placeholder="Email" />
+          </div>
+          <div class="input-field">
+            <i class="fas fa-lock"></i>
+            <input type="password" name="password" placeholder="Password" />
+          </div>
+          <input type="submit" class="btn" value="Sign up" />
+          <p class="social-text">Connect with social platforms</p>
+          <div class="social-media">
+            <a href="https://www.facebook.com/Shopare-614798372524692" class="social-icon">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://www.instagram.com/the_shopare/" class="social-icon">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="social-icon">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/the-shopare-61500218a/" class="social-icon">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="panels-container">
+      <div class="panel left-panel">
+        <div class="content">
+          <h3>New here ?</h3>
+          <p>
+            Sign up and Discover great amount of Opportunities.
+          </p>
+          <button class="btn transparent" id="sign-up-btn">
+            Sign up
+          </button>
+        </div>
+        <img src="{% static 'img\login.svg' %}" class="image" alt="" />
+      </div>
+      <div class="panel right-panel">
+        <div class="content">
+          <h3>One of us ?</h3>
+          <p>
+            If you already have an account,just sign in.We missed you!!
+          </p>
+          <button class="btn transparent" id="sign-in-btn">
+            Log in
+          </button>
+        </div>
+        <img src="{% static 'img\signup.svg' %}" class="image" alt="" />
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const sign_in_btn = document.querySelector("#sign-in-btn");
+    const sign_up_btn = document.querySelector("#sign-up-btn");
+    const container = document.querySelector(".container");
+
+    sign_up_btn.addEventListener("click", () => {
+      container.classList.add("sign-up-mode");
+    });
+
+    sign_in_btn.addEventListener("click", () => {
+      container.classList.remove("sign-up-mode");
+    });
+
+  </script>
+</body>
+
+</html>

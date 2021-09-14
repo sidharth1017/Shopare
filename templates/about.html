@@ -1,0 +1,192 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% block title %} <title>Shopare | About Us </title>{% endblock title %}
+{% load static %}
+
+<style>
+body{
+    font-family: gotham;
+}
+.values {
+    width: auto;
+    margin: 20px auto;
+    padding-left: 40px;
+    display: flex;
+}
+
+.values ul {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+.values ul li {
+    list-style: none;
+    padding: 8px;
+    box-sizing: border-box;
+    float: left;
+}
+.container {
+    width: auto;
+    margin: 20px auto;
+    padding-left: 40px;
+    display: inline-flex;
+}
+.card-img{
+    border: 7px solid black;
+    border-radius:50%;
+    /* margin-left: 440px; */
+}
+.text{
+    font-size: 22px;
+}
+.textq{
+    font-size: 24px;
+    font-weight: bold;
+} 
+.texta{
+    font-size: 24px;
+    margin-top: 20px;
+    color:crimson
+}
+.text-center{
+    font-size: 35px;
+    font-weight: bold;
+}
+img.card-img-top {
+    width: 18em;
+    height: 27em;
+}
+.about {
+    padding:0px;
+}
+
+.about .heading h2 {
+    font-size: 30px;
+    font-weight: 700;
+    margin: 0;
+    padding: 0;
+
+}
+
+.about .heading h2 span {
+    color: #F24259;
+}
+
+.about .heading p {
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.7;
+    color: #999999;
+    margin: 20px 0 60px;
+    padding: 0;
+}
+
+.about h3 {
+    font-size: 25px;
+    font-weight: 700;
+    margin: 0;
+    padding: 0;
+}
+
+.about p {
+    line-height: 1.7;
+    margin: 20px 0 15px;
+}
+
+.about h4 {
+    font-size: 15px;
+    font-weight: 500;
+    margin: 8px 0;
+}
+
+.about h4 i {
+    color: #F24259;
+    margin-right: 10px;
+}
+/* .col-lg-6 {
+    /* -webkit-text-stroke-width: medium; */
+img.img-fluid {
+    width: 30%;
+border: 7px solid black;
+    border-radius:26%;
+}
+</style>
+<section class="about" id="about">
+    <div class="container">
+       
+        <div class="row">
+            <div class="col-lg-6">
+                <img src="static\img\rudraksh.jpeg" " alt="about" class="img-fluid" width="50%" height="20%">
+            </div>
+            <div class="col-lg-6">
+                <p class="textq">what is Shopare?<br>what made Rudraksh Todwal build a platform that can change the buying habits of consumers?</p>
+    <p class="texta"> Shopare is a platform that is created by Rudraksh , so that the consumer can be benefitted and can buy products like groceries , electronics etc. online or can do drive thru (or Take Away) from your nearest stores. 
+</p>
+</section>
+
+
+<h2 class="text-center">Values at Shopare: </h2>
+<div class="values">
+    <ul>
+        <li>
+            <div class="card" style="width: 18rem;">
+                <img src="static\img\1 (2).jpg" class="card-img-top" alt="...">
+            </div>
+        </li>
+        <li>
+            <div class="card" style="width: 18rem;">
+                <img src="static\img\4 (2).jpg" class="card-img-top" alt="...">
+            </div>
+        </li>
+        <li>
+            <div class="card" style="width: 18rem;">
+                <img src="static\img\5.jpg" class="card-img-top" alt="...">
+            </div>
+        </li>
+
+        <li>
+            <div class="card" style="width: 18rem;">
+                <img src="static\img\6 (2).jpg" class="card-img-top" alt="...">
+            </div>
+        </li>
+
+        <li>
+            <div class="card" style="width: 18rem;">
+                <img src="static\img\7 (2).jpg" class="card-img-top" alt="...">
+            </div>
+        </li>
+
+        <li>
+            <div class="card" style="width: 18rem;">
+                <img src="static\img\8 (2).jpg" class="card-img-top" alt="...">
+            </div>
+        </li>
+
+        <li>
+            <div class="card" style="width: 18rem;">
+                <img src="static\img\22.jpg" class="card-img-top" alt="...">
+            </div>
+        </li>
+        <li>
+            <div class="card" style="width: 18rem;">
+                <img src="static\img\33.jpg" class="card-img-top" alt="...">
+            </div>
+        </li>
+    </ul>
+</div>
+<hr>
+<div style="margin-left:50px;">
+    <h2 class="textm">Mission:</h2>
+    <p class="text1">Empowering the traditional or physical stores to be a part of revolution in Jaipur<br> By
+        delivering delightfull experience online and with a new system of Drive Thru or Take Away.</p>
+    <h2 class="textm" style="margin-top: 50px;"> Vision:</h2>
+    <p class="text1" style="margin-bottom: 20px ;">Shopare vision is to provide online facilities to every traditional
+        shops for their growth <br>And vision to cover most of the sectors in market like groceries, medical and apparel
+        etc.
+    <p>
+</div>
+</div>
+</div>
+{% endblock content %}

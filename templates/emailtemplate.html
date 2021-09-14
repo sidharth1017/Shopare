@@ -1,0 +1,115 @@
+<style>
+    .email {
+        padding-left: 0%;
+    }
+    .email img{
+        padding-top: 30px;
+    }
+
+    .email a {
+        font-size: 2em;
+        text-decoration: none;
+    }
+
+    .order h3,
+    p {
+        padding-left: 0%;
+        margin-top: 0px;
+    }
+
+    .wel h4,
+    p {
+        padding-left: 0%;
+    }
+
+    .summary {
+        padding-left: 0%;
+    }
+
+    .summary p {
+        padding-left: 0%;
+    }
+
+    hr {
+        margin-left: 0%;
+        width: 61em;
+        margin-top: 40px;
+    }
+
+    .quantity {
+        padding-left: 0%;
+        margin-top: -40px;
+    }
+
+    .price {
+        padding-left: 0%;
+        margin-top: -26px;
+    }
+
+    .subtotal {
+        padding-left: 0%;
+    }
+
+    .subtotal1 {
+        padding-left: 6%;
+    }
+
+    .ord {
+        padding-left: 0%;
+    }
+
+    .delivery {
+        padding-left: 0%;
+    }
+
+    .end {
+        padding-left: 0%;
+        width: 1000px;
+        padding-bottom: 10px;
+    }
+
+    .total1 a {
+        text-decoration: none;
+        padding-left: 0%;
+        font-size: 2em;
+        padding-bottom: 10px;
+    }
+</style>
+<div class="email">
+    <img src="http://shopare.in/static/img/shoparelogo.png" width="150px">
+    <a href="http://shopare.in/">Shopare.in</a>
+</div>
+<hr>
+<div class="order">
+    <h3>ORDER CONFIRMATION</h3>
+    <!-- <div class="ord">ORDER #</div> -->
+</div>
+<div class="wel">
+    <h4>Hello, {{name}}</h4>
+    <p>Thank you for your order,<br>We'll inform you when your order ships.<br>If you would like to view the status of
+        your order than please Contact Us on +91 7979986668.</p>
+</div>
+<h1 class="summary">ORDER SUMMARY</h1>
+<hr>
+<div class="summary">
+    <!-- <p>ORDER #</p> -->
+    <p>Item Ordered:</p>
+    {% for product in products %}
+    <p>{{forloop.counter}}.) {{product}}</p>
+    {% endfor %}
+</div>
+<hr>
+<div class="total">
+    <div class="subtotal">Subtotal: ₹ {{total}}</div>
+    <div class="subtotal">Order total: ₹ {{total}}</div>
+    <div class="delivery">Delivery Method: {{payment}}</div>
+    <div class="delivery">Payment Method: Cash On Delivery (COD)</div>
+</div>
+<hr>
+<div class="total1">
+    <div class="end">To ensure your saftey the delivery agent will drop the package. If you are in a containment zone,
+        the agent will calluoy and request you to collect your package from nearest accisible point while following the
+        same no contact dilivery process.</div>
+    <div class="end">We hope to see you again soon.</div>
+    <a href="http://shopare.in/">Shopare.in</a>
+</div>

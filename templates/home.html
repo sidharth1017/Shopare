@@ -1,0 +1,169 @@
+{% extends 'base2.html' %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+<link rel="stylesheet" href="{% static 'css/yellow.css' %}">
+<link rel="stylesheet" href="{% static 'css/red.css' %}">
+<link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+
+<style>
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: "Poppins";
+    }
+
+    p {
+        font-size: 15px;
+        font-family: "lato";
+        line-height: 28px;
+        color: #9fa4af;
+        display: inline-block;
+        letter-spacing: 0.5px;
+    }
+
+    ul li,
+    ol li {
+        font-family: "Poppins";
+    }
+
+    .block {
+        float: left;
+        padding: 77px 0;
+        position: relative;
+        width: 100%;
+    }
+
+    a,
+    a:hover,
+    a:focus,
+    a:active {
+        color: black;
+        outline: none;
+        -webkit-text-decoration: none;
+        -moz-text-decoration: none;
+        -ms-text-decoration: none;
+        -o-text-decoration: none;
+        text-decoration: none;
+    }
+
+    .wow bounceIn {
+        float: left;
+
+
+    }
+
+    @media (max-width: 768px) {
+        .MERCHANTS-wrapper.style2 .top-Merchant>a img {
+            max-width: 50%;
+        }
+    }
+
+    @media (max-width: 1024px) {
+        .MERCHANTS-wrapper.style2 .top-Merchant>a img {
+            max-width: 65%;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .MERCHANTS-wrapper.style2>li {
+            padding: 0px 3px;
+            width: 98%;
+        }
+    }
+
+    @media (max-width: 420px) {
+        .MERCHANTS-wrapper.style2 .top-Merchant>a {
+            box-shadow: 0 3px 0 rgba(0, 0, 0, 0.07);
+            height: 184px;
+            line-height: 100px;
+        }
+    }
+
+    .top-Merchant>a img {
+        width: 21em;
+        display: inline-block !important;
+        transform: scale(0.75);
+        height: 12em;
+    }
+
+    .MERCHANTS-wrapper.style2 .top-Merchant>a {
+        border: 3px solid #f1f1f1;
+        box-shadow: 0 11px 0 0 rgba(0, 0, 0, 0.02);
+        height: 155px;
+        line-height: 150px;
+        width: 212px;
+        margin-bottom: 38px;
+    }
+    .container{
+        margin-top: 3em;
+    }
+</style>
+
+<section>
+    <div class="block remove-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-lg-12">
+                    <div class="title1-wrapper text-center">
+                        <div class="title1-inner">
+                            <span>Multi Grocery and store system</span>
+                            <h2 itemprop="headline">Top MERCHANTS</h2>
+                            <p itemprop="description">Things that get tricky are things like fruits and vegetables, or
+                                things that are deep-fried. We do have a couple of fruit MERCHANTS that are capable of
+                                doing a good job transporting but it's Fries are almost impossible.</p>
+                        </div>
+                    </div>
+                    <div class="top-MERCHANTS-wrapper">
+                        <ul class="MERCHANTS-wrapper style2">
+                            <li class="wow bounceIn" data-wow-delay="0.8s">
+                                <div class="top-Merchant"><a class="brd-rd50" href="grocery" title="GROCERY"
+                                        itemprop="url"><img src="{% static 'img\GROCERY.png' %}" alt="top-Merchant4.png"
+                                            itemprop="image"></a></div>
+                            </li>
+                            <li class="wow bounceIn" data-wow-delay="0.2s">
+                                <div class="top-Merchant"><a class="brd-rd50" href="bakery" title="BAKERY"
+                                        itemprop="url"><img src="{% static 'img/BAKERY.png' %}" alt="top-Merchant1.png"
+                                            itemprop="image"></a></div>
+                            </li>
+                            <li class="wow bounceIn" data-wow-delay="0.4s">
+                                <div class="top-Merchant"><a class="brd-rd50" href="comingsoon" title="CLOTHING"
+                                        itemprop="url"><img src="{% static 'img\CLOTHING.png' %}"
+                                            alt="top-Merchant2.png" itemprop="image"></a></div>
+                            </li>
+                            <li class="wow bounceIn" data-wow-delay="0.6s">
+                                <div class="top-Merchant"><a class="brd-rd50" href="comingsoon" title="ELECTRIC"
+                                        itemprop="url"><img src="{% static 'img\ELECTRIC.png' %}"
+                                            alt="top-Merchant3.png" itemprop="image"></a></div>
+                            </li>
+                            <li class="wow bounceIn" data-wow-delay="1s">
+                                <div class="top-Merchant"><a class="brd-rd50" href="comingsoon" title="HOSPITAL"
+                                        itemprop="url"><img src="{% static 'img\HOSPITAL.png' %}"
+                                            alt="top-Merchant5.png" itemprop="image"></a></div>
+                            </li>
+                            <li class="wow bounceIn" data-wow-delay="1.2s">
+                                <div class="top-Merchant"><a class="brd-rd50" href="comingsoon" title="MEDICAL"
+                                        itemprop="url"><img src="{% static 'img\MEDICAL.png' %}" alt="top-Merchant6.png"
+                                            itemprop="image"></a></div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!-- top resturents -->
+{{products}}
+
+
+
+{%load static %}
+<script src="{% static '/js/main.js' %}"></script>
+<script src="{% static '/js/jquery.js' %}"></script>
+<script src="{% static '/js/plugin.js' %}"></script>
+
+{% endblock content %}
